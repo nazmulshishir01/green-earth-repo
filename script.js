@@ -37,9 +37,11 @@ async function fetchData(type, id = null) {
     const data = await res.json();
     if (type === "categories") {
       return data.categories;
-    } else if (type === "plants" || type === "plantDetail") {
-      return data.plants;
-    }
+    } else if (type === "plants") {
+  return data.plants;
+} else if (type === "plantDetail") {
+  return data.plants;  
+}
   } catch (err) {
     console.error("Error fetching data:", err);
     return null;
@@ -272,7 +274,9 @@ async function showModal(plantId) {
         <h3 class="text-lg font-semibold text-gray-800">${plant.name}</h3>
         <p class="text-gray-600 text-sm mt-2">${plant.description}</p>
         <div class="flex items-center justify-between mt-4">
-          <span class="px-2 py-1 bg-emerald-50 text-[#15803D] text-sm font-medium rounded-full">Fruit Tree</span>
+          <span class="px-2 py-1 bg-emerald-50 text-[#15803D] text-sm font-medium rounded-full">
+  ${plant.category}
+</span>
           <span class="text-[#1F2937] font-semibold">৳${plant.price}</span>
         </div>
         <button class="w-full mt-4 rounded-full bg-[#15803D] text-white font-semibold py-2 add-to-cart" data-id="${plant.id}">Add to Cart</button>
