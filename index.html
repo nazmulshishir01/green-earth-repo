@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Green Earth - Plant a Tree</title>
 
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -411,8 +416,69 @@
       </div>
     </section>
 
+    <!-- Form Section -->
+    <section id="plant" class="bg-[#166534] text-white py-16">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 text-center">
+        <h2 class="text-3xl md:text-3xl font-bold">Plant a Tree Today</h2>
+
+        <form
+          id="donationForm"
+          class="max-w-lg mx-auto mt-8 text-left bg-[#15803D] rounded-lg p-6"
+        >
+          <input
+            type="text"
+            placeholder="Your Name"
+            required
+            class="w-full rounded-md px-4 py-3 bg-white text-gray-800 mb-2 placeholder:text-gray-400"
+          />
+
+          <input
+            type="email"
+            placeholder="Your Email Address"
+            required
+            class="w-full rounded-md px-4 py-3 bg-white text-gray-800 mb-2 placeholder:text-gray-400"
+          />
+
+          <div class="relative mb-2">
+            <select
+              required
+              class="w-full rounded-md bg-white text-gray-800 px-4 py-3 pr-12 appearance-none border"
+            >
+              <option value="">Number of Trees</option>
+              <option value="1">1 Tree - $50</option>
+              <option value="5">5 Trees - $200</option>
+              <option value="10">10 Trees - $400</option>
+              <option value="25">25 Trees - $900</option>
+            </select>
+
+            <!-- Font Awesome Down Arrow Icon -->
+            <span
+              class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/4"
+            >
+              <i class="fa-solid fa-chevron-down text-gray-500"></i>
+            </span>
+          </div>
+
+          
+
+          <button
+            type="submit"
+            class="w-full mt-2 rounded-full bg-geGold text-green-900 font-semibold px-6 py-2"
+          >
+            Donate Now
+          </button>
+        </form>
+      </div>
+    </section>
 
 
+
+    <!-- Footer -->
+    <footer class="bg-[#14532D] text-white text-center py-4">
+      <div class="max-w-6xl mx-auto px-2">
+        &copy; 2025 Green Earth. All Rights Reserved.
+      </div>
+    </footer>
 
   </body>
 </html>
