@@ -345,7 +345,6 @@ function setupMobileMenu() {
 }
 
 
-
 document.addEventListener("DOMContentLoaded", () => {
   setupMobileMenu();
   loadCategories();
