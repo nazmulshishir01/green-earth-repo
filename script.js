@@ -204,3 +204,40 @@ function renderCart() {
     });
   });
 }
+
+// ------------------ Cart Actions ------------------
+
+async function addToCart(plantId) {
+  const plant = await loadPlantDetails(plantId);
+  if (!plant) return;
+
+  const existing = cart.find((i) => i.id === plant.id);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({
+      id: plant.id,
+      name: plant.name,
+      price: plant.price,
+      quantity: 1,
+    });
+  }
+  renderCart();
+
+
+
+  alert(`${plant.name} has been added to the cart`);
+}
+
+
+function removeFromCart(plantId) {
+  const idx = cart.findIndex((item) => item.id == plantId);
+  if (idx !== -1) {
+    if (cart[idx].quantity > 1) {
+      cart[idx].quantity -= 1;
+    } else {
+      cart.splice(idx, 1);
+    }
+    renderCart();
+  }
+}
