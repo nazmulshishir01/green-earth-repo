@@ -31,14 +31,14 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <!-- Inline Tailwind Config -->
+    <!-- Tailwind Config -->
     
 <script>
   tailwind.config = {
     theme: {
       extend: {
         fontFamily: {
-          // Inter → Arial → Noto Sans → generic sans-serif
+          
           sans: ['Inter', 'Arial', 'Noto Sans', 'sans-serif']
         },
         colors: {
@@ -50,7 +50,6 @@
     },
   };
 </script>
-
 
 
     <style>
@@ -91,6 +90,7 @@
 
 
     <!-- Header -->
+
     <header class="fixed top-0 inset-x-0 z-50 bg-[#15803D] text-white shadow">
       <div class="max-w-6xl mx-auto px-4 md:px-8">
         <div class="flex items-center justify-between h-16">
@@ -157,8 +157,10 @@
     </header>
 
     <!-- Hero Section -->
+
     <section class="relative overflow-hidden bg-[#CFF0DC] pt-16 pb-20">
-      <!-- Left leaf -->
+     
+        <!-- Left leaf -->
       <img
         src="assets/hero-leaf1.png"
         alt="Left Leaf"
@@ -220,6 +222,7 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-[200px,1fr,160px] gap-2">
+
           <!-- Categories -->
           <aside class="h-fit text-sm">
             <h3 class="text-base font-semibold text-gray-700 px-3 py-2">
@@ -233,6 +236,7 @@
           </aside>
 
           <!-- Products -->
+
           <section>
             <div
               id="productsGrid"
@@ -362,6 +366,7 @@
           Our Impact
         </h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
           <!-- Card 1 -->
           <div
             class="fade-up group bg-white rounded-xl shadow p-8 text-center transition-colors duration-300 ease-out hover:bg-[#15803D]"
@@ -414,6 +419,7 @@
     </section>
 
     <!-- Form Section -->
+     
     <section id="plant" class="bg-[#166534] text-white py-16">
       <div class="max-w-6xl mx-auto px-4 md:px-8 text-center">
         <h2 class="text-3xl md:text-3xl font-bold">Plant a Tree Today</h2>

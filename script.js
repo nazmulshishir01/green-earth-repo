@@ -1,4 +1,4 @@
-// ------------------ DOM  ------------------
+// --------- DOM  ----
 
 const productsGrid = document.getElementById("productsGrid");
 const categoryList = document.getElementById("categoryList");
@@ -20,7 +20,7 @@ let cart = [];
 const BASE_URL = "https://openapi.programming-hero.com/api";
 
 
-// ------------------ Data Fetching ------------------
+// ---------- Data Fetching ----
 
 async function fetchData(type, id = null) {
   let url;
@@ -47,7 +47,7 @@ async function fetchData(type, id = null) {
 }
 
 
-// ------------------ Render Functions ------------------
+// --- Render Functions --------------
 
 async function loadCategories() {
   let categories = await fetchData("categories");
@@ -204,7 +204,7 @@ function renderCart() {
   });
 }
 
-// ------------------ Cart Actions ------------------
+// ----------- Cart Actions ------------
 
 async function addToCart(plantId) {
   const plant = await loadPlantDetails(plantId);
@@ -241,7 +241,7 @@ function removeFromCart(plantId) {
   }
 }
 
-// ------------------ UI & Event Handlers ------------------
+// ------------ Event Handlers --------------
 
 function setupCategoryFilters() {
   categoryList.addEventListener("click", (e) => {
