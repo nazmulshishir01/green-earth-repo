@@ -47,7 +47,6 @@ async function fetchData(type, id = null) {
 }
 
 
-
 // ------------------ Render Functions ------------------
 
 async function loadCategories() {
@@ -241,3 +240,113 @@ function removeFromCart(plantId) {
     renderCart();
   }
 }
+
+// ------------------ UI & Event Handlers ------------------
+
+function setupCategoryFilters() {
+  categoryList.addEventListener("click", (e) => {
+    if (e.target.matches(".category-filter")) {
+      e.preventDefault();
+      const filters = categoryList.querySelectorAll(".category-filter");
+      filters.forEach((x) =>
+        x.classList.remove("bg-[#15803D]", "text-geDeep", "rounded")
+      );
+      e.target.classList.add("bg-[#15803D]", "text-geDeep", "rounded");
+      const categoryId = e.target.dataset.id;
+      loadPlants(categoryId);
+    }
+  });
+}
+
+
+async function showModal(plantId) {
+  const plant = await loadPlantDetails(plantId);
+  if (plant) {
+    const imageTag = plant.image
+      ? `<img src="${plant.image}" alt="${plant.name}" class="w-full h-48 object-cover mb-4 rounded" />`
+      : ""; 
+
+    modalContent.innerHTML = `
+      <div class="p-2 rounded-lg">
+        ${imageTag}
+        <h3 class="text-lg font-semibold text-gray-800">${plant.name}</h3>
+        <p class="text-gray-600 text-sm mt-2">${plant.description}</p>
+        <div class="flex items-center justify-between mt-4">
+          <span class="px-2 py-1 bg-emerald-50 text-[#15803D] text-sm font-medium rounded-full">Fruit Tree</span>
+          <span class="text-[#1F2937] font-semibold">৳${plant.price}</span>
+        </div>
+        <button class="w-full mt-4 rounded-full bg-[#15803D] text-white font-semibold py-2 add-to-cart" data-id="${plant.id}">Add to Cart</button>
+      </div>
+    `;
+
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+
+    modalContent
+      .querySelector(".add-to-cart")
+      .addEventListener("click", (e) =>
+        addToCart(e.currentTarget.dataset.id)
+      );
+  }
+}
+
+
+function closeModal() {
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+}
+
+function setupFormSubmission() {
+  const form = document.getElementById("donationForm");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = form.querySelector('input[type="text"]').value.trim();
+    const email = form.querySelector('input[type="email"]').value.trim();
+    const trees = form.querySelector("select").value;
+    if (name && email && trees) {
+      alert(
+        `Thank you, ${name}! Your donation for ${trees} tree(s) has been received. We'll send confirmation to ${email}.`
+      );
+      form.reset();
+    }
+  });
+}
+
+
+
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function setupFadeUp() {
+  const els = document.querySelectorAll(".fade-up");
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      });
+    },
+    { threshold: 0.2 }
+  );
+  els.forEach((el) => io.observe(el));
+}
+
+function setupMobileMenu() {
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
+}
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupMobileMenu();
+  loadCategories();
+  renderCart(); 
+  setupCategoryFilters();
+  setupFormSubmission();
+  setupFadeUp();
+});
