@@ -1,4 +1,4 @@
-// --------- DOM  ----
+// --------- DOM  ---------
 
 const productsGrid = document.getElementById("productsGrid");
 const categoryList = document.getElementById("categoryList");
@@ -142,25 +142,24 @@ function renderProducts(list) {
 
 
 function renderCart() {
-  
+
   const targets = [
-    { items: cartItems, total: cartTotal },
+    { items: cartItems,       total: cartTotal },
     { items: cartItemsMobile, total: cartTotalMobile },
   ];
 
   let total = 0;
+
+  
   targets.forEach((t) => {
-    if (!t.items || !t.total) return;
-    t.items.innerHTML = "";
+    if (!t?.items || !t?.total) return;
+    t.items.innerHTML = ""; 
   });
+
 
   if (cart.length === 0) {
     targets.forEach((t) => {
-      if (!t || !t.items || !t.total) return;
-      
-      if (t.items === cartItems) {
-        t.items.innerHTML = `<p class="text-gray-500 text-center">Your cart is empty.</p>`;
-      }
+      if (!t?.total) return;
       t.total.textContent = "৳0";
       const tw = t.total.closest(".border-t");
       if (tw) tw.style.display = "none";
@@ -168,13 +167,13 @@ function renderCart() {
     return;
   }
 
+
   cart.forEach((item) => {
     total += item.price * item.quantity;
     targets.forEach((t) => {
-      if (!t || !t.items) return;
+      if (!t?.items) return;
       const row = document.createElement("div");
-      row.className =
-        "flex items-center justify-between p-2 mb-2 rounded-md bg-emerald-50";
+      row.className = "flex items-center justify-between p-2 mb-2 rounded-md bg-emerald-50";
       row.innerHTML = `
         <div class="flex-1">
           <span class="font-semibold text-sm">${item.name}</span>
@@ -185,14 +184,14 @@ function renderCart() {
     });
   });
 
+
   targets.forEach((t) => {
-    if (!t || !t.total) return;
+    if (!t?.total) return;
     t.total.textContent = `৳${total}`;
     const tw = t.total.closest(".border-t");
     if (tw) tw.style.display = "";
   });
 
-  
 
   [cartItems, cartItemsMobile].forEach((container) => {
     if (!container) return;
@@ -203,6 +202,7 @@ function renderCart() {
     });
   });
 }
+
 
 // ----------- Cart Actions ------------
 
