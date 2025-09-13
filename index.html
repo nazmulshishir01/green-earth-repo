@@ -16,10 +16,18 @@
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script> 
 
-   
+    <!-- Font Awesome -->
+
+    <script src="https://kit.fontawesome.com/0fd0e0d102.js" crossorigin="anonymous"></script>
 
 
-    
+    <!-- Daisy -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- Inline Tailwind Config -->
     
@@ -43,6 +51,38 @@
 
 
 
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        overflow-x: hidden; 
+      }
+      .fade-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .fade-up.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .fade-up {
+          transition: none;
+          transform: none;
+          opacity: 1;
+        }
+      }
+    </style>
   </head>
 
   <body class="text-gray-800 font-sans">
@@ -114,7 +154,7 @@
       </div>
     </header>
 
-    <!-- Banner Section -->
+    <!-- Hero Section -->
     <section class="relative overflow-hidden bg-[#CFF0DC] pt-16 pb-20">
       <!-- Left leaf -->
       <img
@@ -149,8 +189,120 @@
       </div>
     </section>
 
-    
- <!-- About Section -->
+
+
+    <!-- Main Section -->
+    <main class="py-16 bg-green-50" id="trees">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <h2
+          class="text-xl md:text-[32px] font-semibold text-[#15803D] text-center mb-10"
+        >
+          Choose Your Trees
+        </h2>
+
+        <div class="space-y-0">
+          <div
+            id="loading-spinner"
+            class="justify-center items-center mt-8 mb-6"
+          >
+            <div class="flex space-x-2 items-center">
+              <div class="h-2 w-2 rounded-full bg-gray-500 animate-bounce"></div>
+              <div
+                class="h-2 w-2 rounded-full bg-gray-500 animate-bounce [animation-delay:-0.3s]"
+              ></div>
+              <div
+                class="h-2 w-2 rounded-full bg-gray-500 animate-bounce [animation-delay:-0.6s]"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-[200px,1fr,160px] gap-2">
+          <!-- Categories -->
+          <aside class="h-fit text-sm">
+            <h3 class="text-base font-semibold text-gray-700 px-3 py-2">
+              Categories
+            </h3>
+            
+            <ul
+              class="py-1 md:block flex gap-2 overflow-x-auto px-3 no-scrollbar"
+              id="categoryList"
+            ></ul>
+          </aside>
+
+          <!-- Products -->
+          <section>
+            <div
+              id="productsGrid"
+              class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"
+            ></div>
+          </section>
+
+          <!-- Mobile Cart -->
+          <details
+            class="md:hidden bg-white rounded-lg shadow-sm border border-gray-200 h-fit p-2 text-sm mb-3"
+          >
+            <summary 
+              class="text-sm font-semibold text-gray-800 cursor-pointer list-none"
+            >
+              Your Cart
+            </summary>
+            <div id="cartItemsMobile" class="space-y-1 mt-2"></div>
+            <div class="border-t border-gray-200 pt-1 mt-2">
+              <div
+                class="flex items-center justify-between text-sm font-semibold text-gray-800"
+              >
+                <span>Total:</span>
+                <span id="cartTotalMobile" class="text-green-600">৳0</span>
+              </div>
+            </div>
+          </details>
+
+
+          <!-- Desktop Cart -->
+          <aside
+            class="hidden md:block bg-white rounded-lg shadow-sm border border-gray-200 h-fit p-2 text-sm"
+          >
+            <h3 class="text-sm font-semibold text-gray-800 mb-1">Your Cart</h3>
+            <div id="cartItems" class="space-y-1 mb-1">
+              <p class="text-gray-500 text-center">Your cart is empty.</p>
+            </div>
+            <div class="border-t border-gray-200 pt-1">
+              <div
+                class="flex items-center justify-between text-sm font-semibold text-gray-800"
+              >
+                <span>Total:</span>
+                <span id="cartTotal" class="text-green-600">৳0</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+
+
+    <!-- Modal -->
+    <div
+      id="modal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center p-8 z-[999]"
+    >
+      <div
+        class="bg-white rounded-lg shadow-xl max-w-sm w-full p-3 sm:p-4 relative"
+      >
+        <button
+          onclick="closeModal()"
+          class="absolute top-4 right-8 text-white hover:text-red-500 text-xl font-extrabold"
+        >
+          &times;
+        </button>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+
+
+
+    <!-- About Section -->
     <section class="py-4 bg-green-50" id="about">
       <div class="max-w-6xl mx-auto px-4 md:px-8">
         <div class="p-6 md:p-8">
@@ -193,6 +345,66 @@
                   <span>Support for local communities</span>
                 </li>
               </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Impact Section -->
+    <section class="bg-[#CFF0DC] py-16">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#1F2937] text-center mb-10">
+          Our Impact
+        </h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div
+            class="fade-up group bg-white rounded-xl shadow p-8 text-center transition-colors duration-300 ease-out hover:bg-[#15803D]"
+          >
+            <div
+              class="text-[32px] font-semibold text-geGreen transition-colors duration-300 group-hover:text-white"
+            >
+              500K+
+            </div>
+            <div
+              class="text-[16px] font-normal text-gray-600 mt-1 transition-colors duration-300 group-hover:text-white"
+            >
+              Trees Planted
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="fade-up group bg-white rounded-xl shadow p-8 text-center transition-colors duration-300 ease-out hover:bg-[#15803D]"
+          >
+            <div
+              class="text-[32px] font-semibold text-geGreen transition-colors duration-300 group-hover:text-white"
+            >
+              120+
+            </div>
+            <div
+              class="text-[16px] font-normal text-gray-600 mt-1 transition-colors duration-300 group-hover:text-white"
+            >
+              Communities Involved
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="fade-up group bg-white rounded-xl shadow p-8 text-center transition-colors duration-300 ease-out hover:bg-[#15803D]"
+          >
+            <div
+              class="text-[32px] font-semibold text-geGreen transition-colors duration-300 group-hover:text-white"
+            >
+              30+
+            </div>
+            <div
+              class="text-[16px] font-normal text-gray-600 mt-1 transition-colors duration-300 group-hover:text-white"
+            >
+              Countries Reached
             </div>
           </div>
         </div>
