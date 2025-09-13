@@ -1,4 +1,4 @@
-# answer the following question-
+# Answer The Following Question of Assignment 6-
 
 ## 1)  What is the difference between var, let, and const?
 
