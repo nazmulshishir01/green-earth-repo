@@ -1,1 +1,122 @@
-git
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green Earth - Plant a Tree</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script> 
+
+   
+
+
+    
+
+    <!-- Inline Tailwind Config -->
+    
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          // Inter → Arial → Noto Sans → generic sans-serif
+          sans: ['Inter', 'Arial', 'Noto Sans', 'sans-serif']
+        },
+        colors: {
+          geGreen: { DEFAULT: "#22c55e" },
+          geGold: "#fbbf24",
+          geDeep: "#FFFFFF",
+        },
+      },
+    },
+  };
+</script>
+
+
+
+  </head>
+
+  <body class="text-gray-800 font-sans">
+
+
+    <!-- Header -->
+    <header class="fixed top-0 inset-x-0 z-50 bg-[#15803D] text-white shadow">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="#" class="inline-flex items-center gap-2 text-lg select-none">
+            <span aria-hidden="true" class="text-2xl leading-none">🌱</span>
+            <span>Green Earth</span>
+          </a>
+
+          <!-- Desktop nav -->
+          <nav class="hidden md:block">
+            <ul class="flex items-center gap-8">
+              <li>
+                <a
+                  href="#about"
+                  class="hover:underline hover:underline-offset-4 hover:decoration-2 hover:transition-all duration-300"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#gallery"
+                  class="hover:underline hover:underline-offset-4 hover:decoration-2 hover:transition-all duration-300"
+                  >Gallery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#plant"
+                  class="hover:underline hover:underline-offset-4 hover:decoration-2 hover:transition-all duration-300"
+                  >Plant a Tree</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <div class="flex items-center gap-2">
+
+            <!-- Mobile menu button -->
+            <button
+              id="mobileMenuBtn"
+              class="md:hidden inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-geGold text-green-900 font-semibold"
+            >
+              <i class="fa-solid fa-bars"></i>
+              Menu
+            </button>
+
+            <a
+              href="#plant"
+              class="hidden md:inline-flex items-center font-semibold rounded-full bg-geGold text-green-800 px-4 py-2 hover:-translate-y-0.5 transition-transform"
+              >Plant a Tree</a
+            >
+          </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <nav id="mobileMenu" class="md:hidden hidden border-t border-white/20">
+          <ul class="flex flex-col py-2">
+            <li><a href="#about" class="block px-4 py-3 hover:bg-white/10">About</a></li>
+            <li><a href="#gallery" class="block px-4 py-3 hover:bg-white/10">Gallery</a></li>
+            <li><a href="#plant" class="block px-4 py-3 hover:bg-white/10">Plant a Tree</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    
+
+
+
+  </body>
+</html>
